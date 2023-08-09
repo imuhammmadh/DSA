@@ -1,3 +1,12 @@
+let a = [3, 2, 1, 5, 2]
+let largest = a[0];
+for (let i = 0; i < a.length; i++) {
+    if (a[i] > largest) {
+        largest = a[i]
+    }
+}
+console.log(largest);
+let arr = [7, 2, 5, 1]
 function sLargest(a) {
     let largest = a[0];
     let sLarge = -Infinity;
