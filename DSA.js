@@ -1,10 +1,13 @@
-
-
-
-
-
-
-
+function FindLargestElOptimal(arr) {
+  let maxNum = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (maxNum < arr[i]) {
+      maxNum = arr[i];
+    }
+  }
+  return maxNum;
+}
+console.log(FindLargestElBetter([1, 3, 5, 4, 6, 7, 8]));
 
 let arr = [1, 2, 3, 4]
 function sLargest(a) {
