@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-let arr = [1, 2, 3, 4]
 function sLargest(a) {
     let largest = a[0];
     let sLarge = -Infinity;
