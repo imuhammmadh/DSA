@@ -70,3 +70,21 @@ function rotateByOne(arr) {
 }
 console.log(rotateByOne([1, 2, 3, 4, 5]));
 
+function move0toLastBrute(arr) {
+    let temp = [];
+    let l = arr.length;
+    for (let i = 0; i < l; i++) {
+        if (arr[i] != 0) {
+            temp.push(arr[i]);
+        }
+    }
+    for (let i = 0; i < temp.length; i++) {
+        arr[i] = temp[i];
+    }
+    let nz = temp.length;
+    for (let i = nz; i < l; i++) {
+        arr[i] = 0;
+    }
+    return arr;
+}
+console.log(move0toLastBrute([1, 0, 2, 3]));
