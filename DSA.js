@@ -36,7 +36,7 @@ function sSmallest(a) {
 }
 console.log(sSmallest(arr));
 
-function RemoveDuplicatesOptimal(nums) { // yeh mat karo 
+function RemoveDuplicatesOptimal(nums) {
     if (nums.length == 0) return 0;
     let i = 0;
     for (let j = 0; j < nums.length; j++) {
@@ -89,19 +89,41 @@ function move0toLastBrute(arr) {
 }
 console.log(move0toLastBrute([1, 0, 2, 3]));
 
-function move0toLastOptimal(arr) {
-    let j = -Infinity;
+function moveZeroToEnd(arr) {
+    let j = -1;
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] == 0) {
+        if (arr[i] === 0) {
             j = i;
             break;
         }
     }
-    for (let i = j + 1; i < arr.length; i++) {
+    if (j === -1) return "There is no zero in and array";
+    for (i = j + 1; i < arr.length; i++) {
         if (arr[i] !== 0) {
+            [([arr[i], arr[j]] = [arr[j], arr[i]])];
+            // 1     2           2     1   
             j++;
         }
     }
     return arr;
 }
-console.log(move0toLastOptimal([1, 0, 2, 3, 2, 0, 0, 4, 5, 1]));
+console.log(moveZeroToEnd([1, 0, 2, 3, 2, 0, 0, 4, 5, 1]));
+
+function intersection(a, b) {
+    let i = 0;
+    let j = 0;
+    let result = [];
+    while (i < a.length && j < b.length) {
+        if (a[i] < b[j]) {
+            i++;
+        } else if (b[j] < a[i]) {
+            j++;
+        } else {
+            result.push(a[i]);
+            i++;
+            j++;
+        }
+    }
+    return result;
+}
+console.log(intersection([1, 2, 2, 3, 3, 4, 5, 6], [2, 3, 3, 5, 6, 6, 7]));
