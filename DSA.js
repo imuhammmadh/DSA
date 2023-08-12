@@ -137,3 +137,18 @@ function missingNumber(arr, n) {
     return sum - s2;
 }
 console.log(missingNumber([1, 2, 4, 5], 5));
+
+function findMaxConsecutivesOnes(arr) {
+    let max = 0;
+    let counter = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == 1) {
+            counter++;
+            max = Math.max(max, counter)
+        } else {
+            counter = 0;
+        }
+    }
+    return max;
+}
+console.log(findMaxConsecutivesOnes([1, 0, 1, 1, 1, 0, 1, 1]));
