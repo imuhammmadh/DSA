@@ -127,3 +127,13 @@ function intersection(a, b) {
     return result;
 }
 console.log(intersection([1, 2, 2, 3, 3, 4, 5, 6], [2, 3, 3, 5, 6, 6, 7]));
+
+function missingNumber(arr, n) {
+    let sum = n * (n + 1) / 2;
+    let s2 = 0;
+    for (let i = 0; i < arr.length; i++) {
+        s2 += arr[i];
+    }
+    return sum - s2;
+}
+console.log(missingNumber([1, 2, 4, 5], 5));
