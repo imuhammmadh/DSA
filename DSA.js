@@ -175,3 +175,21 @@ function longestSubarrayWithSumK(a, k) {
     return maxL;
 }
 console.log(longestSubarrayWithSumK([1, 2, 3, 1, 1, 1, 1, 3, 3], 6));
+
+function twoSum(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    arr.sort(function (a, b) { return a - b });
+    while (left < right) {
+        let sum = arr[left] + arr[right];
+        if (sum == target) {
+            return "YES";
+        } else if (sum < target) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    return "NO";
+}
+console.log(twoSum([2, 6, 5, 11, 8], 14));
