@@ -193,3 +193,29 @@ function twoSum(arr, target) {
     return "NO";
 }
 console.log(twoSum([2, 6, 5, 11, 8], 14));
+
+function Majority(arr) {
+    let counter = 0;
+    var element;
+    for (let i = 0; i < arr.length; i++) {
+        if (counter == 0) {
+            counter = 1;
+            element = arr[i]
+        } else if (arr[i] == element) {
+            counter++;
+        } else {
+            counter--;
+        }
+    }
+    let counter2 = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == element) {
+            counter2++;
+        }
+    }
+    if (counter2 > (arr.length / 2)) {
+        return element;
+    }
+    return -1;
+}
+console.log(Majority([5, 5, 1, 5, 5, 5, 7, 2, 5, 5, 5, 5]));
