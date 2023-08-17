@@ -1,12 +1,14 @@
-let a = [3, 2, 1, 5, 2]
-let largest = a[0];
-for (let i = 0; i < a.length; i++) {
-    if (a[i] > largest) {
-        largest = a[i]
+function Maximum(arr) {
+    let largest = -Infinity;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            largest = arr[i]
+        }
     }
+    return largest;
 }
-console.log(largest);
-let arr = [7, 2, 5, 1]
+console.log(Maximum([3, 2, 8, 1, 5]));
+
 function sLargest(a) {
     let largest = a[0];
     let sLarge = -Infinity;
@@ -20,7 +22,7 @@ function sLargest(a) {
     }
     return sLarge;
 }
-console.log(sLargest(arr));
+console.log(sLargest([7, 2, 5, 1]));
 function sSmallest(a) {
     let smallest = a[0];
     let sSmall = Infinity;
@@ -34,7 +36,7 @@ function sSmallest(a) {
     }
     return sSmall
 }
-console.log(sSmallest(arr));
+console.log(sSmallest([7, 2, 5, 1]));
 
 function RemoveDuplicatesOptimal(nums) {
     if (nums.length == 0) return 0;
