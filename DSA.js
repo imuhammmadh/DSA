@@ -253,3 +253,16 @@ function rearrangeArray(arr) {
     return ans;
 }
 console.log(rearrangeArray([-4, 2, 3, -1]));
+
+function maximumProfit(prices) {
+    let mini = prices[0];
+    let maxProfit = 0;
+    let l = prices.length;
+    for (let i = 0; i < l; i++) {
+        let cost = prices[i] - mini;
+        maxProfit = Math.max(maxProfit, cost);
+        mini = Math.min(mini, prices[i]);
+    }
+    return maxProfit;
+}
+console.log(maximumProfit([7, 1, 3, 6, 5, 2, 4]));
