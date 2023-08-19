@@ -236,3 +236,20 @@ function maxSubarraySumKadane(arr) {
     return max;
 }
 console.log(maxSubarraySumKadane([-2, -3, 4, -1, -2, 5, -3]));
+
+function rearrangeArray(arr) {
+    let positive = 0;
+    let negative = 1;
+    let ans = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > 0) {
+            ans[positive] = arr[i];
+            positive += 2;
+        } else {
+            ans[negative] = arr[i];
+            negative += 2;
+        }
+    }
+    return ans;
+}
+console.log(rearrangeArray([-4, 2, 3, -1]));
