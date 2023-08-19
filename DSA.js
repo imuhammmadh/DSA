@@ -1,7 +1,7 @@
 function Maximum(arr) {
     let largest = -Infinity;
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > largest) {
+        if (largest < arr[i]) {
             largest = arr[i]
         }
     }
@@ -11,18 +11,19 @@ console.log(Maximum([3, 2, 8, 1, 5]));
 
 function sLargest(a) {
     let largest = a[0];
-    let sLarge = -Infinity;
+    let sLargest = -Infinity;
     for (let i = 0; i < a.length; i++) {
-        if (a[i] > largest) {
-            sLarge = largest;
+        if (largest < a[i]) {
+            sLargest = largest;
             largest = a[i];
-        } else if (a[i] < largest && a[i] > sLarge) {
-            sLarge = a[i];
+        } else if (largest > a[i] && a[i] > sLargest) {
+            sLargest = a[i];
         }
     }
-    return sLarge;
+    return sLargest;
 }
-console.log(sLargest([7, 2, 5, 1]));
+console.log(sLargest([1, 3, 2, 6, 5]));
+
 function sSmallest(a) {
     let smallest = a[0];
     let sSmall = Infinity;
@@ -49,16 +50,16 @@ function RemoveDuplicatesOptimal(nums) {
     }
     return i + 1;
 }
-console.log(RemoveDuplicatesOptimal([1, 1, 2, 3, 3]));
+console.log(RemoveDuplicatesOptimal([1, 2, 3, 3]));
 
 function isSorted(arr) {
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] >= arr[i - 1]) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] <= arr[i + 1]) {
+            return true;
         } else {
             return false;
         }
     }
-    return true;
 }
 console.log(isSorted([1, 2, 3, 4, 5, 6]));
 
@@ -67,7 +68,7 @@ function rotateByOne(arr) {
     for (let i = 1; i < arr.length; i++) {
         arr[i - 1] = arr[i];
     }
-    arr[arr.length - 1] = temp;
+    arr[arr.length - 1] = temp
     return arr;
 }
 console.log(rotateByOne([1, 2, 3, 4, 5]));
@@ -94,16 +95,14 @@ console.log(move0toLastBrute([1, 0, 2, 3]));
 function moveZeroToEnd(arr) {
     let j = -1;
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === 0) {
+        if (arr[i] == 0) {
             j = i;
-            break;
+            break
         }
     }
-    if (j === -1) return "There is no zero in and array";
-    for (i = j + 1; i < arr.length; i++) {
+    for (let i = j + 1; i < arr.length; i++) {
         if (arr[i] !== 0) {
             [([arr[i], arr[j]] = [arr[j], arr[i]])];
-            // 1     2           2     1   
             j++;
         }
     }
@@ -118,7 +117,7 @@ function intersection(a, b) {
     while (i < a.length && j < b.length) {
         if (a[i] < b[j]) {
             i++;
-        } else if (b[j] < a[i]) {
+        } else if (a[i] > b[j]) {
             j++;
         } else {
             result.push(a[i]);
@@ -132,11 +131,11 @@ console.log(intersection([1, 2, 2, 3, 3, 4, 5, 6], [2, 3, 3, 5, 6, 6, 7]));
 
 function missingNumber(arr, n) {
     let sum = n * (n + 1) / 2;
-    let s2 = 0;
+    let missed = 0;
     for (let i = 0; i < arr.length; i++) {
-        s2 += arr[i];
+        missed += arr[i];
     }
-    return sum - s2;
+    return sum - missed;
 }
 console.log(missingNumber([1, 2, 4, 5], 5));
 
@@ -221,3 +220,19 @@ function Majority(arr) {
     return -1;
 }
 console.log(Majority([5, 5, 1, 5, 5, 5, 7, 2, 5, 5, 5, 5]));
+
+function maxSubarraySumKadane(arr) {
+    let sum = 0;
+    let max = -Infinity;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+        if (sum > max) {
+            max = sum;
+        }
+        if (sum < 0) {
+            sum = 0;
+        }
+    }
+    return max;
+}
+console.log(maxSubarraySumKadane([-2, -3, 4, -1, -2, 5, -3]));
