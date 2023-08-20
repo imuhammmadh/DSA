@@ -266,3 +266,18 @@ function maximumProfit(prices) {
     return maxProfit;
 }
 console.log(maximumProfit([7, 1, 3, 6, 5, 2, 4]));
+
+function superiorElements(arr) {
+    let ans = [];
+    let max = -Infinity;
+    let n = arr.length;
+    for (let i = n - 1; i >= 0; i--) {
+        if (arr[i] > max) {
+            ans.push(arr[i]);
+        }
+        max = Math.max(max, arr[i]);
+    }
+    arr.sort(function (a, b) { return a - b });
+    return ans;
+}
+console.log(superiorElements([10, 22, 12, 4, 0, 6]));
