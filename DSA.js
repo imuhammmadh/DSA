@@ -281,3 +281,24 @@ function superiorElements(arr) {
     return ans;
 }
 console.log(superiorElements([10, 22, 12, 4, 0, 6]));
+
+function longestSuccessiveElements(arr) {
+    if (arr.length == 0) return 0;
+    arr.sort(function (a, b) { return a - b });
+    let n = arr.length;
+    let lastSmaller = -Infinity;
+    let count = 0;
+    let longest = 1;
+    for (let i = 0; i < n; i++) {
+        if (arr[i] - 1 == lastSmaller) {
+            count += 1;
+            lastSmaller = arr[i];
+        } else if (lastSmaller != arr[i]) {
+            count = 1;
+            lastSmaller = arr[i];
+        }
+        longest = Math.max(longest, count);
+    }
+    return longest;
+}
+console.log(longestSuccessiveElements([1, 2, 3, 4, 5, 6, 8, 7]));
