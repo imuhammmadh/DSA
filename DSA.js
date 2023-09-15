@@ -53,13 +53,13 @@ function RemoveDuplicatesOptimal(nums) {
 console.log(RemoveDuplicatesOptimal([1, 2, 3, 3]));
 
 function isSorted(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] <= arr[i + 1]) {
-            return true;
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] >= arr[i - 1]) {
         } else {
             return false;
         }
     }
+    return true;
 }
 console.log(isSorted([1, 2, 3, 4, 5, 6]));
 
