@@ -1,8 +1,8 @@
-function Maximum(arr) {
+function Maximum(nums) {
     let largest = -Infinity;
-    for (let i = 0; i < arr.length; i++) {
-        if (largest < arr[i]) {
-            largest = arr[i]
+    for (let i = 0; i < nums.length; i++) {
+        if (largest < nums[i]) {
+            largest = nums[i]
         }
     }
     return largest;
@@ -52,9 +52,9 @@ function RemoveDuplicatesOptimal(nums) {
 }
 console.log(RemoveDuplicatesOptimal([1, 2, 3, 3]));
 
-function isSorted(arr) {
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] >= arr[i - 1]) {
+function isSorted(nums) {
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] >= nums[i - 1]) {
         } else {
             return false;
         }
@@ -63,50 +63,50 @@ function isSorted(arr) {
 }
 console.log(isSorted([1, 2, 3, 4, 5, 6]));
 
-function rotateByOne(arr) {
-    let temp = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-        arr[i - 1] = arr[i];
+function rotateByOne(nums) {
+    let temp = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        nums[i - 1] = nums[i];
     }
-    arr[arr.length - 1] = temp
-    return arr;
+    nums[nums.length - 1] = temp
+    return nums;
 }
 console.log(rotateByOne([1, 2, 3, 4, 5]));
 
-function move0toLastBrute(arr) {
+function move0toLastBrute(nums) {
     let temp = [];
-    let l = arr.length;
+    let l = nums.length;
     for (let i = 0; i < l; i++) {
-        if (arr[i] != 0) {
-            temp.push(arr[i]);
+        if (nums[i] != 0) {
+            temp.push(nums[i]);
         }
     }
     for (let i = 0; i < temp.length; i++) {
-        arr[i] = temp[i];
+        nums[i] = temp[i];
     }
     let nz = temp.length;
     for (let i = nz; i < l; i++) {
-        arr[i] = 0;
+        nums[i] = 0;
     }
-    return arr;
+    return nums;
 }
 console.log(move0toLastBrute([1, 0, 2, 3]));
 
-function moveZeroToEnd(arr) {
+function moveZeroToEnd(nums) {
     let j = -1;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] == 0) {
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] == 0) {
             j = i;
             break
         }
     }
-    for (let i = j + 1; i < arr.length; i++) {
-        if (arr[i] !== 0) {
-            [([arr[i], arr[j]] = [arr[j], arr[i]])];
+    for (let i = j + 1; i < nums.length; i++) {
+        if (nums[i] !== 0) {
+            [([nums[i], nums[j]] = [nums[j], nums[i]])];
             j++;
         }
     }
-    return arr;
+    return nums;
 }
 console.log(moveZeroToEnd([1, 0, 2, 3, 2, 0, 0, 4, 5, 1]));
 
@@ -129,21 +129,21 @@ function intersection(a, b) {
 }
 console.log(intersection([1, 2, 2, 3, 3, 4, 5, 6], [2, 3, 3, 5, 6, 6, 7]));
 
-function missingNumber(arr, n) {
+function missingNumber(nums, n) {
     let sum = n * (n + 1) / 2;
     let missed = 0;
-    for (let i = 0; i < arr.length; i++) {
-        missed += arr[i];
+    for (let i = 0; i < nums.length; i++) {
+        missed += nums[i];
     }
     return sum - missed;
 }
 console.log(missingNumber([1, 2, 4, 5], 5));
 
-function findMaxConsecutivesOnes(arr) {
+function findMaxConsecutivesOnes(nums) {
     let max = 0;
     let counter = 0;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] == 1) {
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] == 1) {
             counter++;
             max = Math.max(max, counter)
         } else {
@@ -154,7 +154,7 @@ function findMaxConsecutivesOnes(arr) {
 }
 console.log(findMaxConsecutivesOnes([1, 0, 1, 1, 1, 0, 1, 1]));
 
-function longestSubarrayWithSumK(a, k) {
+function longestSubnumsayWithSumK(a, k) {
     let left = 0
     let right = 0;
     let sum = a[0];
@@ -175,14 +175,14 @@ function longestSubarrayWithSumK(a, k) {
     }
     return maxL;
 }
-console.log(longestSubarrayWithSumK([1, 2, 3, 1, 1, 1, 1, 3, 3], 6));
+console.log(longestSubnumsayWithSumK([1, 2, 3, 1, 1, 1, 1, 3, 3], 6));
 
-function twoSum(arr, target) {
+function twoSum(nums, target) {
     let left = 0;
-    let right = arr.length - 1;
-    arr.sort(function (a, b) { return a - b });
+    let right = nums.length - 1;
+    nums.sort(function (a, b) { return a - b });
     while (left < right) {
-        let sum = arr[left] + arr[right];
+        let sum = nums[left] + nums[right];
         if (sum == target) {
             return "YES";
         } else if (sum < target) {
@@ -195,37 +195,37 @@ function twoSum(arr, target) {
 }
 console.log(twoSum([2, 6, 5, 11, 8], 14));
 
-function Majority(arr) {
+function Majority(nums) {
     let counter = 0;
     var element;
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < nums.length; i++) {
         if (counter == 0) {
             counter = 1;
-            element = arr[i]
-        } else if (arr[i] == element) {
+            element = nums[i]
+        } else if (nums[i] == element) {
             counter++;
         } else {
             counter--;
         }
     }
     let counter2 = 0;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] == element) {
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] == element) {
             counter2++;
         }
     }
-    if (counter2 > (arr.length / 2)) {
+    if (counter2 > (nums.length / 2)) {
         return element;
     }
     return -1;
 }
 console.log(Majority([5, 5, 1, 5, 5, 5, 7, 2, 5, 5, 5, 5]));
 
-function maxSubarraySumKadane(arr) {
+function maxSubnumsaySumKadane(nums) {
     let sum = 0;
     let max = -Infinity;
-    for (let i = 0; i < arr.length; i++) {
-        sum += arr[i];
+    for (let i = 0; i < nums.length; i++) {
+        sum += nums[i];
         if (sum > max) {
             max = sum;
         }
@@ -235,24 +235,24 @@ function maxSubarraySumKadane(arr) {
     }
     return max;
 }
-console.log(maxSubarraySumKadane([-2, -3, 4, -1, -2, 5, -3]));
+console.log(maxSubnumsaySumKadane([-2, -3, 4, -1, -2, 5, -3]));
 
-function rearrangeArray(arr) {
+function renumsangenumsay(nums) {
     let positive = 0;
     let negative = 1;
     let ans = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > 0) {
-            ans[positive] = arr[i];
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > 0) {
+            ans[positive] = nums[i];
             positive += 2;
         } else {
-            ans[negative] = arr[i];
+            ans[negative] = nums[i];
             negative += 2;
         }
     }
     return ans;
 }
-console.log(rearrangeArray([-4, 2, 3, -1]));
+console.log(renumsangenumsay([-4, 2, 3, -1]));
 
 function maximumProfit(prices) {
     let mini = prices[0];
@@ -267,38 +267,39 @@ function maximumProfit(prices) {
 }
 console.log(maximumProfit([7, 1, 3, 6, 5, 2, 4]));
 
-function superiorElements(arr) {
+function superiorElements(nums) {
     let ans = [];
     let max = -Infinity;
-    let n = arr.length;
+    let n = nums.length;
     for (let i = n - 1; i >= 0; i--) {
-        if (arr[i] > max) {
-            ans.push(arr[i]);
+        if (nums[i] > max) {
+            ans.push(nums[i]);
         }
-        max = Math.max(max, arr[i]);
+        max = Math.max(max, nums[i]);
     }
-    arr.sort(function (a, b) { return a - b });
+    nums.sort(function (a, b) { return a - b });
     return ans;
 }
 console.log(superiorElements([10, 22, 12, 4, 0, 6]));
 
-function longestSuccessiveElements(arr) {
-    if (arr.length == 0) return 0;
-    arr.sort(function (a, b) { return a - b });
-    let n = arr.length;
+function longestSuccessiveElements(nums) {
+    if (nums.length == 0) return 0;
+    nums.sort(function (a, b) { return a - b });
+    let n = nums.length;
     let lastSmaller = -Infinity;
     let count = 0;
     let longest = 1;
     for (let i = 0; i < n; i++) {
-        if (arr[i] - 1 == lastSmaller) {
+        if (nums[i] - 1 == lastSmaller) {
             count += 1;
-            lastSmaller = arr[i];
-        } else if (lastSmaller != arr[i]) {
+            lastSmaller = nums[i];
+        } else if (lastSmaller != nums[i]) {
             count = 1;
-            lastSmaller = arr[i];
+            lastSmaller = nums[i];
         }
         longest = Math.max(longest, count);
     }
     return longest;
 }
 console.log(longestSuccessiveElements([1, 2, 3, 4, 5, 6, 8, 7]));
+
