@@ -237,7 +237,7 @@ function maxSubnumsaySumKadane(nums) {
 }
 console.log(maxSubnumsaySumKadane([-2, -3, 4, -1, -2, 5, -3]));
 
-function renumsangenumsay(nums) {
+function reArrangenumsarray(nums) {
     let positive = 0;
     let negative = 1;
     let ans = [];
@@ -252,7 +252,7 @@ function renumsangenumsay(nums) {
     }
     return ans;
 }
-console.log(renumsangenumsay([-4, 2, 3, -1]));
+console.log(reArrangenumsarray([-4, 2, 3, -1]));
 
 function maximumProfit(prices) {
     let mini = prices[0];
@@ -303,3 +303,29 @@ function longestSuccessiveElements(nums) {
 }
 console.log(longestSuccessiveElements([1, 2, 3, 4, 5, 6, 8, 7]));
 
+function threeSum(nums) {
+    let integer = []
+    nums.sort((a, b) => { return a - b })
+    for (let i = 0; i < nums.length; i++) {
+        if (i > 0 && nums[i] == nums[i - 1]) continue
+        let j = i + 1
+        let k = nums.length - 1
+        while (j < k) {
+            let sum = nums[i] + nums[j] + nums[k]
+            if (sum < 0) {
+                j++
+            } else if (sum > 0) {
+                k--
+            } else {
+                let temp = [nums[i], nums[j], nums[k]]
+                integer.push(temp)
+                j++
+                k--
+                while (j < k && nums[j] == nums[j - 1]) j++
+                while (j < k && nums[k] == nums[k + 1]) k--
+            }
+        }
+    }
+    return integer
+};
+console.log(threeSum([-1, 0, 1, 2, -1, -4]));
