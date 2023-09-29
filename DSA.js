@@ -329,3 +329,23 @@ function threeSum(nums) {
     return integer
 };
 console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+
+function misssingNrepeating(a) {
+    let n = a.length
+    let sn = (n * (n + 1)) / 2
+    let s2n = (n * (n + 1) * (2 * n + 1)) / 6
+    let s
+    let s2
+    for (let i = 0; i < n; i++) {
+        s += a[i]
+        s2 += a[i] * a[i]
+    }
+    let x
+    let y
+    let value1 = s - sn
+    let value2 = s2 - s2n
+    value2 = value2 / value1
+    x = (value1 + value2) / 2
+    y = x - value1
+    return [x, y]
+}
