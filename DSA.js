@@ -334,18 +334,32 @@ function misssingNrepeating(a) {
     let n = a.length
     let sn = (n * (n + 1)) / 2
     let s2n = (n * (n + 1) * (2 * n + 1)) / 6
-    let s
-    let s2
+    let s = 0
+    let s2 = 0
     for (let i = 0; i < n; i++) {
         s += a[i]
         s2 += a[i] * a[i]
     }
-    let x
-    let y
     let value1 = s - sn
     let value2 = s2 - s2n
     value2 = value2 / value1
-    x = (value1 + value2) / 2
-    y = x - value1
+    let x = (value1 + value2) / 2
+    let y = x - value1
     return [x, y]
 }
+console.log(misssingNrepeating([4, 3, 5, 6, 1, 1]));
+
+function maxProductSubarray(nums) {
+    let prefix = 1
+    let suffix = 1
+    let ans = -Infinity
+    for (let i = 0; i < nums.length; i++) {
+        if (prefix === 0) prefix = 1
+        if (suffix === 0) suffix = 1
+        prefix *= nums[i]
+        suffix *= nums[(nums.length) - i - 1]
+        ans = Math.max(ans, Math.max(prefix, suffix))
+    }
+    return ans
+}
+console.log(maxProductSubarray([1, 2, -3, 0, -4, -5]));
