@@ -90,6 +90,41 @@ function moveZeroToEnd(nums) {
 }
 console.log(moveZeroToEnd([1, 0, 2, 3, 2, 0, 0, 4, 5, 1]));
 
+function unionArray(a, b) {
+    let n1 = a.length
+    let n2 = b.length
+    let union = []
+    let i = 0
+    let j = 0
+    while (i < n1 && j < n2) {
+        if (a[i] <= b[j]) {
+            if (union.length === 0 || union[union.length - 1] !== a[i]) {
+                union.push(a[i])
+            }
+            i++
+        } else {
+            if (union.length === 0 || union[union.length - 1] !== b[j]) {
+                union.push(b[j])
+            }
+            j++
+        }
+    }
+    while (j < n2) {
+        if (union.length === 0 || union[union.length - 1] !== b[j]) {
+            union.push(b[j])
+        }
+        j++
+    }
+    while (i < n1) {
+        if (union.length === 0 || union[union.length - 1] !== a[i]) {
+            union.push(a[i])
+        }
+        i++
+    }
+    return union
+}
+console.log(unionArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [2, 3, 4, 4, 5, 11, 12]));
+
 function intersection(a, b) {
     let i = 0;
     let j = 0;
@@ -260,7 +295,7 @@ function superiorElements(nums) {
     nums.sort(function (a, b) { return a - b });
     return ans;
 }
-console.log(superiorElements([10, 22, 12, 3, 0, 6]));
+console.log(superiorElements([10, 22, 12, 4, 0, 6]));
 
 function longestSuccessiveElements(nums) {
     if (nums.length == 0) return 0;
