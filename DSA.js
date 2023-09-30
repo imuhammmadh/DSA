@@ -14,10 +14,10 @@ function sLargest(a) {
     let sLargest = -Infinity;
     for (let i = 0; i < a.length; i++) {
         if (largest < a[i]) {
-            sLargest = largest;
-            largest = a[i];
+            sLargest = largest
+            largest = a[i]
         } else if (largest > a[i] && a[i] > sLargest) {
-            sLargest = a[i];
+            sLargest = a[i]
         }
     }
     return sLargest;
@@ -40,15 +40,15 @@ function sSmallest(a) {
 console.log(sSmallest([7, 2, 5, 1]));
 
 function RemoveDuplicates(nums) {
-    if (nums.length == 0) return 0;
-    let i = 0;
-    for (let j = 0; j < nums.length; j++) {
+    if (nums.length == 0) return 0
+    let i = 0
+    for (let j = 1; j < nums.length; j++) {
         if (nums[j] !== nums[i]) {
-            i++;
-            nums[i] = nums[j];
+            nums[i + 1] = nums[j]
+            i++
         }
     }
-    return i + 1;
+    return i + 1
 }
 console.log(RemoveDuplicates([1, 2, 3, 3]));
 
