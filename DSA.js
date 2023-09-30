@@ -169,6 +169,15 @@ function findMaxConsecutivesOnes(nums) {
 }
 console.log(findMaxConsecutivesOnes([1, 0, 1, 1, 1, 0, 1, 1]));
 
+function appearedOnce(nums) {
+    let xorr = 0
+    for (let i = 0; i < nums.length; i++) {
+        xorr = xorr ^ nums[i]
+    }
+    return xorr
+}
+console.log(appearedOnce([4, 1, 2, 1, 2]));
+
 function longestSubnumsayWithSumK(a, k) {
     let left = 0
     let right = 0;
