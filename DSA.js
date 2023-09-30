@@ -39,7 +39,7 @@ function sSmallest(a) {
 }
 console.log(sSmallest([7, 2, 5, 1]));
 
-function RemoveDuplicatesOptimal(nums) {
+function RemoveDuplicates(nums) {
     if (nums.length == 0) return 0;
     let i = 0;
     for (let j = 0; j < nums.length; j++) {
@@ -50,12 +50,11 @@ function RemoveDuplicatesOptimal(nums) {
     }
     return i + 1;
 }
-console.log(RemoveDuplicatesOptimal([1, 2, 3, 3]));
+console.log(RemoveDuplicates([1, 2, 3, 3]));
 
 function isSorted(nums) {
     for (let i = 1; i < nums.length; i++) {
-        if (nums[i] >= nums[i - 1]) {
-        } else {
+        if (nums[i] < nums[i - 1]) {
             return false;
         }
     }
@@ -72,25 +71,6 @@ function rotateByOne(nums) {
     return nums;
 }
 console.log(rotateByOne([1, 2, 3, 4, 5]));
-
-function move0toLastBrute(nums) {
-    let temp = [];
-    let l = nums.length;
-    for (let i = 0; i < l; i++) {
-        if (nums[i] != 0) {
-            temp.push(nums[i]);
-        }
-    }
-    for (let i = 0; i < temp.length; i++) {
-        nums[i] = temp[i];
-    }
-    let nz = temp.length;
-    for (let i = nz; i < l; i++) {
-        nums[i] = 0;
-    }
-    return nums;
-}
-console.log(move0toLastBrute([1, 0, 2, 3]));
 
 function moveZeroToEnd(nums) {
     let j = -1;
@@ -280,7 +260,7 @@ function superiorElements(nums) {
     nums.sort(function (a, b) { return a - b });
     return ans;
 }
-console.log(superiorElements([10, 22, 12, 4, 0, 6]));
+console.log(superiorElements([10, 22, 12, 3, 0, 6]));
 
 function longestSuccessiveElements(nums) {
     if (nums.length == 0) return 0;
