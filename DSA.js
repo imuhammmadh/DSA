@@ -220,28 +220,28 @@ function twoSum(nums, target) {
 console.log(twoSum([2, 6, 5, 11, 8], 14));
 
 function Majority(nums) {
-    let counter = 0;
-    var element;
+    let counter = 0
+    let element
     for (let i = 0; i < nums.length; i++) {
         if (counter == 0) {
-            counter = 1;
+            counter = 1
             element = nums[i]
         } else if (nums[i] == element) {
-            counter++;
+            counter++
         } else {
-            counter--;
+            counter--
         }
     }
-    let counter2 = 0;
+    let counter2 = 0
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] == element) {
-            counter2++;
+            counter2++
         }
     }
-    if (counter2 > (nums.length / 2)) {
-        return element;
+    if (counter2 > ((nums.length) / 2)) {
+        return element
     }
-    return -1;
+    return -1
 }
 console.log(Majority([5, 5, 1, 5, 5, 5, 7, 2, 5, 5, 5, 5]));
 
