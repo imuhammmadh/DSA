@@ -354,6 +354,50 @@ function threeSum(nums) {
 };
 console.log(threeSum([-1, 0, 1, 2, -1, -4]));
 
+function majorityElement(nums) {
+    let cnt1 = 0
+    let cnt2 = 0
+    let el1 = -Infinity
+    let el2 = -Infinity
+    for (let i = 0; i < nums.length; i++) {
+        if (cnt1 == 0 && el2 != nums[i]) {
+            cnt1 = 1
+            el1 = nums[i]
+        } else if (cnt2 == 0 && el1 != nums[i]) {
+            cnt2 = 1
+            el2 = nums[i]
+        } else if (nums[i] == el1) {
+            cnt1++
+        } else if (nums[i] == el2) {
+            cnt2++
+        } else {
+            cnt1--
+            cnt2--
+        }
+    }
+    let number = []
+    cnt1 = 0
+    cnt2 = 0
+    for (let i = 0; i < nums.length; i++) {
+        if (el1 == nums[i]) {
+            cnt1++
+        }
+        if (el2 == nums[i]) {
+            cnt2++
+        }
+    }
+    let mini = Math.floor(nums.length / 3) + 1
+    if (cnt1 >= mini) {
+        number.push(el1)
+    }
+    if (cnt2 >= mini) {
+        number.push(el2)
+    }
+    number.sort(function (a, b) { return a - b });
+    return number
+}
+console.log(majorityElement([11, 33, 33, 11, 33, 11, 12, 12, 12, 12]));
+
 function misssingNrepeating(a) {
     let n = a.length
     let sn = (n * (n + 1)) / 2
