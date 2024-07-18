@@ -431,3 +431,6 @@ function maxProductSubarray(nums) {
     return ans
 }
 console.log(maxProductSubarray([1, 2, -3, 0, -4, -5]));
+
+console.log(x);
+let x = 5
